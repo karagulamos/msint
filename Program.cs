@@ -10,7 +10,7 @@ namespace Euler
             var device = new XTouchDevice();
             var sensor = new TouchSensor(device);
 
-            Console.WriteLine("Number of fingers on screen: {0}", sensor.GetTouchCount());
+            Console.WriteLine("Number of fingers detected: {0}", sensor.GetTouchCount());
         }
     }
 }
