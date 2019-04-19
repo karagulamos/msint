@@ -4,6 +4,6 @@ namespace Euler.Regions
 {
     public interface ITouchDevice
     {
-        List<List<int>> GetScreenState();
+        int [][] GetScreenState();
     }
 }
