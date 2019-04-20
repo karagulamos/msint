@@ -36,7 +36,7 @@ namespace Euler
             var failText = $"Test {testNumber} Failed.";
 
             var models = Model.GetSamples();
-            var cache = new FastBoundedCache<string, int>(models.Length);
+            var cache = new FastBoundedCache<string, int>(5);
 
             foreach(var model in models)
             {
