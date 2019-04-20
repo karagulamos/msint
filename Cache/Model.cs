@@ -17,6 +17,7 @@ namespace Euler.Cache
             return new Model[]
             {
                 new Model("one", 1),
+                new Model("one", 1),
                 new Model("two", 2),
                 new Model("three", 3),
                 new Model("four", 4),
