@@ -20,12 +20,12 @@ namespace Euler.Cache
 
         public void Insert(TKey key, TValue value)
         {
-            var hasKey = _cacheEntries.TryGetValue(key, out var entry);
+            var entryExists = _cacheEntries.TryGetValue(key, out var entry);
 
-            if(!hasKey && _cacheEntries.Count >= _capacity)
+            if(!entryExists && _cacheEntries.Count >= _capacity)
                 RemoveLeastRecentlyUsedEntry();
             
-            if(hasKey) _journal.Remove(entry);            
+            if(entryExists) _journal.Remove(entry);            
 
             var newEntry = new LinkedListNode<TValue>(value);
             _journal.AddLast(newEntry);
