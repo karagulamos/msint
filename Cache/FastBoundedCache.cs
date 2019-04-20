@@ -57,16 +57,12 @@ namespace Euler.Cache
 
             builder.Append('[');
 
-            var current = _journal.First;
-
-            while(current != null)
+            for(var curr = _journal.First; curr != null; curr = curr.Next)
             {
-                builder.Append(current.Value);
+                builder.Append(curr.Value);
 
-                if(current.Next != null)
+                if(curr.Next != null)
                     builder.Append(", ");
-
-                current = current.Next;
             }
 
             return builder.Append(']').ToString();
