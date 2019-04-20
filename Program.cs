@@ -9,11 +9,11 @@ namespace Euler
     {
         static void Main(string[] args)
         {
-            RunTouchCountDetectionTest(1);
+            RunTouchDetectionTest(1);
             RunLruCacheTest(2);           
         }
 
-        public static void RunTouchCountDetectionTest(int testNumber)
+        public static void RunTouchDetectionTest(int testNumber)
         {
             var passText = $"Test {testNumber} Passed.";
             var failText = $"Test {testNumber} Failed.";
