@@ -10,7 +10,7 @@ namespace Euler
         static void Main(string[] args)
         {
             RunTouchCountDetectionTest(1);
-            RunFastBoundedCacheTest(2);           
+            RunLruCacheTest(2);           
         }
 
         public static void RunTouchCountDetectionTest(int testNumber)
@@ -30,7 +30,7 @@ namespace Euler
             Console.WriteLine(passText);
         }
 
-        public static void RunFastBoundedCacheTest(int testNumber)
+        public static void RunLruCacheTest(int testNumber)
         {
             var passText = $"Test {testNumber} Passed.";
             var failText = $"Test {testNumber} Failed.";
