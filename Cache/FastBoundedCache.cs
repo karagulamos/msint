@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Euler.Cache
@@ -53,7 +54,7 @@ namespace Euler.Cache
 
         public override string ToString() 
         {
-            var builder = new StringBuilder();
+            var builder = new StringBuilder(_journal.Count * 3);
 
             builder.Append('[');
 
