@@ -6,6 +6,7 @@ namespace Euler.Regions
     {
         private const int Processed = -1;
         private const int Touched = 1;
+        private const int Untouched = 0;
 
         private readonly int[][] _grid;
         private readonly Orientation[] _orientations;
@@ -40,8 +41,7 @@ namespace Euler.Regions
                     if (grid[row][col] != Touched)
                         continue;
                     
-                    ProcessTouchRegion(grid, row, col);
-                    ++count;
+                    count += ProcessTouchRegionNoneRecursive(grid, row, col);
                 }
             }
 
@@ -62,6 +62,32 @@ namespace Euler.Regions
                     }
                 }
             }
+        }
+
+        private int ProcessTouchRegionNoneRecursive(int[][] grid, int r, int c)
+        {
+            grid[r][c] = Processed;
+            
+            for(int idx = 0; idx < _orientations.Length; idx++)
+            {
+                var orientation = _orientations[idx];
+
+                var row = r + orientation.Row;
+                var col = c + orientation.Column;
+
+                if(row < 0 || col < 0 || row >= grid.Length || col >= grid[0].Length)
+                    continue;
+
+                if(grid[row][col] == Untouched)  
+                    continue;  
+
+                if(grid[row][col] == Processed)
+                    return 0;
+
+                grid[row][col] = Processed;
+            }
+
+            return 1;
         }
 
         private void ProcessTouchRegion(int[][] grid, int r, int c)

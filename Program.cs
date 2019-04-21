@@ -15,7 +15,7 @@ namespace Euler
 
         public static void RunTouchDetectionTest(int testNumber)
         {
-            var passText = $"Test {testNumber} Passed.";
+            var doneText = $"Test {testNumber} Done.";
             var failText = $"Test {testNumber} Failed.";
 
             var sensor = new TouchSensor(new XTouchDevice());
@@ -27,12 +27,18 @@ namespace Euler
             sensor = new TouchSensor(new ZTouchDevice());
             Contract.Assert(sensor.GetTouchCount() == 0, failText);
 
-            Console.WriteLine(passText);
+            sensor = new TouchSensor(new OneTouchDevice());
+            Contract.Assert(sensor.GetTouchCount() == 1, failText);
+
+            sensor = new TouchSensor(new SparseTouchDevice());
+            Contract.Assert(sensor.GetTouchCount() == 8, failText);
+
+            Console.WriteLine(doneText);
         }
 
         public static void RunLruCacheTest(int testNumber)
         {
-            var passText = $"Test {testNumber} Passed.";
+            var doneText = $"Test {testNumber} Done.";
             var failText = $"Test {testNumber} Failed.";
 
             var models = Model.GetSamples();
@@ -58,7 +64,7 @@ namespace Euler
             var emptyCache = new FastBoundedCache<string, int>(0);
             Contract.Assert(emptyCache.ToString() == "[]", failText);
 
-            Console.WriteLine(passText);
+            Console.WriteLine(doneText);
         }
     }
 }
